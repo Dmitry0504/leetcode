@@ -1,6 +1,6 @@
-package problems;
+package problems.RemoveNthNodeFromEndOfList_19;
 
-public class Solution1 {
+public class Solution {
 
     public static void main(String[] args) {
         ListNode first = new ListNode(1,
@@ -11,7 +11,7 @@ public class Solution1 {
 //        ListNode listNode = new ListNode();
 //        new Solution1().removeNthFromEnd(listNode, 1);
 
-        ListNode node = new Solution1().removeNthFromEnd(first, 4);
+        ListNode node = new Solution().removeNthFromEnd(first, 4);
         while (node != null) {
             System.out.println(node.val);
             node = node.next;
@@ -25,6 +25,7 @@ public class Solution1 {
         ListNode currentNode = head;
         ListNode newHead = currentNode;
         ListNode temp = head;
+        
         while (temp != null) {
             temp = temp.next;
             size++;
@@ -47,19 +48,19 @@ public class Solution1 {
 
     }
 }
- class ListNode {
-     int val;
-     ListNode next;
+class ListNode {
+    int val;
+    ListNode next;
 
-     ListNode() {
-     }
+    ListNode() {
+    }
 
-     ListNode(int val) {
-         this.val = val;
-     }
+    ListNode(int val) {
+        this.val = val;
+    }
 
-     ListNode(int val, ListNode next) {
-         this.val = val;
-         this.next = next;
-     }
- }
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
