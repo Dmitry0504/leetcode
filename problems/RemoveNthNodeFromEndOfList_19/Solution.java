@@ -25,7 +25,7 @@ public class Solution {
         ListNode currentNode = head;
         ListNode newHead = currentNode;
         ListNode temp = head;
-        
+
         while (temp != null) {
             temp = temp.next;
             size++;
