@@ -18,13 +18,14 @@ public class Solution1 {
 //            System.out.println(node.val);
 //            node = node.next;
 //        }
-        System.out.println(new Solution1().myPow(2, -7));
+        System.out.println(new Solution1().lengthOfLastWord(""));
 
 
     }
 
-    public double myPow(double x, int n) {
-        return Math.pow(x, n);
+    public int lengthOfLastWord(String s) {
+        String[] strings = s.split(" ");
+        return strings[strings.length - 1].length();
     }
 
 
