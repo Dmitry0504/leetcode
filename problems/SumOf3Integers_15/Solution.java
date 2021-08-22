@@ -1,29 +1,15 @@
-package problems;
+package problems.SumOf3Integers_15;
+
+import problems.Solution1;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class Solution1 {
-
+public class Solution {
     public static void main(String[] args) {
-//        ListNode first = new ListNode(1,
-//                new ListNode(2,
-//                        new ListNode(3,
-//                                new ListNode(4))));
-//
-//        ListNode listNode = new ListNode();
-//        new Solution1().removeNthFromEnd(listNode, 1);
-
-//        ListNode node = new Solution1().removeNthFromEnd(first, 4);
-//        while (node != null) {
-//            System.out.println(node.val);
-//            node = node.next;
-//        }
-        System.out.println(new Solution1().threeSum(new int[]{-1, 1, 0, 2, -3}));
-
-
+        System.out.println(new Solution().threeSum(new int[]{-1, 1, 0, 2, -3}));
     }
 
     public List<List<Integer>> threeSum(int[] nums) {
@@ -53,7 +39,4 @@ public class Solution1 {
         System.out.println(System.currentTimeMillis() - start);
         return integers;
     }
-
-
-
 }
