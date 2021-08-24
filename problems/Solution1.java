@@ -24,7 +24,26 @@ public class Solution1 {
 //            node = node.next;
 //        }
        // System.out.println(new Solution1().threeSumClosest(new int[]{5, 0, 0, 3}, 1));
-        System.out.println(new Solution1().generateParenthesis(2));
+        System.out.println(new Solution1().mySqrt(2147395599));
+
+    }
+
+    public int mySqrt(int x) {
+        if (x < 2) return x;
+        if (x == 2) return 1;
+        int i = 1;
+
+        while (i < 46341) {
+            long res = i * i;
+            if (res < x) {
+                i++;
+            }
+            else if (res > x) {
+                return i - 1;
+            }
+            else return i;
+        }
+        return i-1;
     }
 
     public int threeSumClosest(int[] nums, int target) {
@@ -56,24 +75,6 @@ public class Solution1 {
         return sumPrev;
     }
 
-    public List<String> generateParenthesis(int n) {
-        List<String> list = new ArrayList<>();
-        bracket(list, n, "", 0, 0);
-        return list;
-    }
 
-    public static void bracket(List<String> list, int count, String str, int left, int right){
-
-        if (left == count && right == count) {
-            list.add(str);
-        }
-        else
-        {
-            if (left<count)
-                bracket(list, count, str + '(', left+1, right);
-            if (right<left)
-                bracket(list, count, str + ')', left, right+1);
-        }
-    }
 
 }
