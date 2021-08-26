@@ -24,27 +24,32 @@ public class Solution1 {
 //            node = node.next;
 //        }
        // System.out.println(new Solution1().threeSumClosest(new int[]{5, 0, 0, 3}, 1));
-        System.out.println(new Solution1().mySqrt(2147395599));
+        System.out.println(new Solution1().divide(Integer.MIN_VALUE, 1));
 
     }
 
-    public int mySqrt(int x) {
-        if (x < 2) return x;
-        if (x == 2) return 1;
-        int i = 1;
+    public int divide(int dividend, int divisor) {
+        if (divisor == 0) return Integer.MAX_VALUE;
+        if (dividend == Integer.MIN_VALUE && divisor == -1) return Integer.MAX_VALUE;
 
-        while (i < 46341) {
-            long res = i * i;
-            if (res < x) {
-                i++;
+        long a = Math.abs((long) dividend);
+        long b = Math.abs((long) divisor);
+
+        int result = 0;
+
+        while (a >= b) {
+            int numShift = 0;
+            while(a >= (b << numShift)){
+                numShift++;
             }
-            else if (res > x) {
-                return i - 1;
-            }
-            else return i;
+
+            result += 1 << (numShift-1);
+            a -= (b << (numShift-1));
         }
-        return i-1;
+        if(dividend > 0 && divisor > 0 || dividend < 0 && divisor < 0) return result;
+        else return -result;
     }
+
 
     public int threeSumClosest(int[] nums, int target) {
         //long start = System.currentTimeMillis();
