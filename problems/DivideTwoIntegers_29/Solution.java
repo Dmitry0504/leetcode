@@ -4,7 +4,7 @@ import problems.Solution1;
 
 public class Solution {
     public static void main(String[] args) {
-        System.out.println(new Solution1().divide(Integer.MIN_VALUE, 1));
+        System.out.println(new Solution().divide(Integer.MIN_VALUE, 1));
     }
 
     public int divide(int dividend, int divisor) {
