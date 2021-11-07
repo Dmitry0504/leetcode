@@ -2,53 +2,113 @@ package problems;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution1 {
 
     public static void main(String[] args) {
-        String[] roles = {"Городничий",
-                "Аммос Федорович",
-                "Артемий Филиппович",
-                "Лука Лукич"};
+//        String[] strings = {"dvd", "abc", "abf"};
+//        System.out.println(new Solution1().longestPrefix(strings));
 
-        String[] textLines = {"Городничий: Я пригласил вас, господа, с тем, чтобы сообщить вам пренеприятное известие: к нам едет ревизор.",
-        "Аммос Федорович: Как ревизор?",
-        "Артемий Филиппович: Как ревизор?",
-        "Городничий: Ревизор из Петербурга, инкогнито. И еще с секретным предписаньем.",
-        "Аммос Федорович: Вот те на!", "Артемий Филиппович: Вот не было заботы, так подай!",
-                "Лука Лукич: Господи боже! еще и с секретным предписаньем!"};
+//        List<Integer> integers = List.of(1, 2, 3, 4, 5, 1, 1, 1, 2, 3, 4, 5, 5, 5);
+//        System.out.println(new Solution1().calculateRepeats(integers));
 
-        System.out.println(new Solution1().printTextPerRole(roles, textLines));
+//        System.out.println(calculateSum1("121212421"));
+//        System.out.println(calculateSum2("121212421"));
+
+        int[] nums = {1, 2, 4, 6, 7};
+        System.out.println(Arrays.toString(twoSum(nums, 10)));
     }
 
-    private String printTextPerRole(String[] roles, String[] textLines) {
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < roles.length; i++) {
-            builder.append(roles[i]).append(":\n");
-            for (int j = 0; j < textLines.length; j++) {
-                if (textLines[j].startsWith(roles[i].concat(":"))) {
-                    builder.append(j + 1).append(") ").append(textLines[j].substring(textLines[j].indexOf(":") + 2))
-                    .append("\n");
-                }
+    //{1, 2, 4, 6, 7}, target = 10
+    //return {4, 6}
+    public static int[] twoSum(int[] nums, int targetSum) {
+        Set<Integer> set = new HashSet<>();
+
+        for (int i : nums) {
+            int x = targetSum - i;
+            if (!set.contains(x)) {
+                set.add(i);
+                continue;
             }
-            builder.append("\n");
+                return new int[]{i, x};
         }
-
-        return builder.toString();
+        return null;
     }
+//    public static int[] twoSum(int[] nums, int targetSum) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        for(int i = 0; i < nums.length; i++) {
+//            map.put(nums[i], i);
+//        }
+//
+//        for (int i = 0; i < nums.length; i++) {
+//            int x = targetSum - nums[i];
+//            if (map.containsKey(x) && map.get(x) != i) {
+//                return new int[]{i, map.get(targetSum - nums[i])};
+//            }
+//        }
+//        return null;
+//    }
 
-
-//    public static boolean isPowerOfTwo(int value) {
-//        return Integer.bitCount(Math.abs(value)) == 1;
+//    public static Integer calculateSum1(String input) {
+//        long start = System.currentTimeMillis();
+//        int result = 0;
+//        int num = 0;
+//        try {
+//            num = Integer.parseInt(input);
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        while (num != 0) {
+//            result += num % 10;
+//            num /= 10;
+//        }
+//
+//        long end = System.currentTimeMillis();
+//        System.out.println(end - start + " with while");
+//        return result;
 //    }
 //
-//    public static boolean isPalindrome(String text) {
-//        String string = text.replaceAll("[^a-zA-Z0-9]", "");
-//        StringBuilder builder = new StringBuilder(string);
-//        return builder.reverse().toString().equalsIgnoreCase(string);
+//    public static Integer calculateSum2(String input) {
+//        long start = System.currentTimeMillis();
+//        int result ;
+//
+//        String[] strings = input.split("");
+//        result = Arrays.stream(strings).map(Integer::parseInt).reduce(0, (x, y) -> x+y);
+//        long end = System.currentTimeMillis();
+//
+//        System.out.println(end - start + " with stream");
+//        return result;
 //    }
+
+//    public Map<Integer, Integer> calculateRepeats(List<Integer> input) {
+//        Map<Integer, Integer> map = new HashMap<>();
+//        for(Integer i: input) {
+//            if (map.containsKey(i)) {
+//                map.put(i, map.get(i) + 1);
+//                continue;
+//            }
+//            map.put(i, 1);
+//        }
+//        return map;
+//    }
+
+
+
+    public String longestPrefix(String[] strings) {
+        String prefix = "";
+        int x = 1;
+        String subStr = strings[0].substring(0, x);
+        while (true) {
+            for (int i = 0; i < strings.length; i++) {
+                if (!strings[i].startsWith(subStr)) {
+                    return prefix;
+                }
+            }
+            prefix = subStr;
+            subStr = strings[0].substring(0, ++x);
+        }
+    }
 }
