@@ -2,8 +2,7 @@ package stepic;
 
 public class MethodCall {
     public static void main(String[] args) {
-        System.out.println(getCallerClassAndMethodName());
-        method1();
+        test();
     }
 
     public static void method1() {
@@ -16,5 +15,18 @@ public class MethodCall {
             return null;
 
         return stackTraceElements[3].getClassName() + "#" + stackTraceElements[3].getMethodName(); // your implementation here
+    }
+
+    public static void test() {
+        try {
+            int x = 1;
+            if (x == 1)
+                return;
+            System.out.println("after return");
+        }catch (Exception ignored) {
+
+        } finally {
+            System.out.println("finally");
+        }
     }
 }
